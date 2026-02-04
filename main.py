@@ -1,7 +1,7 @@
 from gmail_service import buscar_emails_remetente
 from extractor_chain import extrair_dados
 
-REMETENTE_LOGISTICO = "vitorltdasp@gmail.com"
+REMETENTE_LOGISTICO = "seu_fornecedor@email.com"
 
 def main():
     emails = buscar_emails_remetente(REMETENTE_LOGISTICO)
