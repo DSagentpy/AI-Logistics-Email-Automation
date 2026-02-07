@@ -6,6 +6,7 @@ from extractor_chain import extrair_dados
 
 REMETENTE_LOGISTICO = ["seufornecedor@gmail.com"]
 
+
 def main():
 
     registros = []
@@ -38,8 +39,7 @@ def main():
     # 🧾 Criar DataFrame
     df = pd.DataFrame(registros)
 
-    # 💾 Salvar CSV
-    df.to_csv("programacoes_logisticas.csv", index=False, encoding="utf-8-sig")
+    
 
     # 💾 Salvar Excel
     nome_arquivo = f"outputs/programacoes_{datetime.now().strftime('%Y%m%d_%H%M%S')}.xlsx"
