@@ -4,7 +4,7 @@ from google.oauth2.credentials import Credentials
 from google_auth_oauthlib.flow import InstalledAppFlow
 from googleapiclient.discovery import build
 
-SCOPES = ['https://www.googleapis.com/auth/gmail.readonly']
+SCOPES = ['https://www.googleapis.com/auth/gmail.readonly','https://www.googleapis.com/auth/calendar']
 
 def autenticar():
     creds = None
@@ -53,3 +53,25 @@ def buscar_emails_remetente(remetente):
                     corpos.append(texto)
 
     return corpos
+
+def criar_evento(data_hora, material, volume):
+
+    creds = Credentials.from_authorized_user_file("token.json", SCOPES)
+    service = build("calendar", "v3", credentials=creds)
+
+    evento = {
+        "summary": f"Recebimento - {material}",
+        "description": f"Material: {material}\nVolume: {volume} toneladas",
+        "start": {
+            "dateTime": data_hora.isoformat(),
+            "timeZone": "America/Sao_Paulo",
+        },
+        "end": {
+            "dateTime": data_hora.isoformat(),
+            "timeZone": "America/Sao_Paulo",
+        },
+    }
+
+    event = service.events().insert(calendarId="primary", body=evento).execute()
+
+    print("Evento criado:", event.get("htmlLink"))    
