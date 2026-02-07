@@ -4,7 +4,7 @@ from datetime import datetime
 from gmail_service import buscar_emails_remetente, criar_evento
 from extractor_chain import extrair_dados
 
-REMETENTE_LOGISTICO = ["vitorltdasp@gmail.com"]
+REMETENTE_LOGISTICO = ["seufornecedor@gmail.com"]
 
 def main():
 
